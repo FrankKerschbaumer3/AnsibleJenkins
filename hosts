@@ -1,0 +1,8 @@
+[amazon]
+#Add DNS hostname of EC2 instance here
+
+[amazon:vars]
+ansible_ssh_private_key_file=
+#Can point to .pem file if needed.
+ansible_user=ec2-user
+#Used to login with EC2 user name
