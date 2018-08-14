@@ -5,11 +5,19 @@
   become_user: root
  
   tasks:
-  - name: upgrade all packages
+  - name: Update all packages
     yum :
       name: '*'
       state: latest
-  - name: install openJDK
+  - name: Install Git
+    yum :
+      name: git
+      state: latest
+  - name: Install Docker
+    yum :
+      name: docker
+      state: latest
+  - name: Install openJDK 8
     yum :
       name: java-1.8.0-openjdk
       state: latest
