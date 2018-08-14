@@ -13,14 +13,6 @@
     yum :
       name: java-1.8.0-openjdk
       state: latest
-  - name: Set java alternatives
-    alternatives :
-      name: java
-      path: /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java
-  - name: Remove Java 1.7.0
-    yum :
-      name: java-1.7.0-openjdk
-      state: removed
   - name: Download Jenkins
     get_url:
       url : http://pkg.jenkins.io/redhat/jenkins.repo
@@ -39,4 +31,4 @@
       src: /var/lib/jenkins/secrets/initialAdminPassword
     register: adminpasswordfile
   - debug:
-      msg: "{{ adminpasswordfile['content'] | b64decode }}"
+      msg: "{{ adminpasswordfile['content'] | b64decode | replace('\n', '')}}"
