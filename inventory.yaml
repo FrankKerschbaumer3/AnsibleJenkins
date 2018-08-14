@@ -21,6 +21,11 @@
     yum :
       name: java-1.8.0-openjdk
       state: latest
+  - shell: echo JAVA_HOME is $JAVA_HOME
+    environment:
+      JAVA_HOME: /usr/lib/jvm/jre-1.8.0-openjdk-1.8.0.181-3.b13.amzn2.x86_64
+    register: shellout
+  - debug: var=shellout
   - name: Download Jenkins
     get_url:
       url : http://pkg.jenkins.io/redhat/jenkins.repo
